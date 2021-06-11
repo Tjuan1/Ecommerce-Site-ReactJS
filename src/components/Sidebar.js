@@ -1,5 +1,4 @@
 import React from 'react'
-import logo from '../assets/logo.svg'
 import { Link } from 'react-router-dom'
 import { useProductsContext } from '../context/products_context'
 import { FaTimes } from 'react-icons/fa'
@@ -9,14 +8,44 @@ import CartButtons from './CartButtons'
 import { useUserContext } from '../context/user_context'
 
 const Sidebar = () => {
-  return <h4>sidebar</h4>
+  //these two are defined in products_context and brought here through useProductsContext
+  const { isSidebarOpen, closeSidebar } = useProductsContext()
+  const { myUser } = useUserContext()
+
+  return (
+    <SidebarContainer>
+      <aside className={`${isSidebarOpen ? 'sidebar show-sidebar' : 'sidebar'}`}>
+        <div className="sidebar-header">
+          <button className="close-btn" type="button" onClick={closeSidebar}>
+            <FaTimes />
+          </button>
+        </div>
+        <ul className="links">
+          {links.map((link) => {
+            const {id, text, url } = link;
+            return <li key={id}>
+              <Link to={url} onClick={closeSidebar}>{text}</Link>
+            </li>
+          })}
+          { 
+            myUser && (
+            <li>
+              <Link to="/checkout" onClick={closeSidebar}>checkout</Link>
+            </li>
+            )
+          }   
+        </ul>
+        <CartButtons />
+      </aside>
+    </SidebarContainer>
+  )
 }
 
 const SidebarContainer = styled.div`
   text-align: center;
   .sidebar-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     padding: 1rem 1.5rem;
   }
@@ -62,23 +91,26 @@ const SidebarContainer = styled.div`
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 230px;
     height: 100%;
     background: var(--clr-white);
     transition: var(--transition);
-    transform: translate(-100%);
+    transform: translateX(calc(100vw + 230px));
     z-index: -1;
   }
   .show-sidebar {
-    transform: translate(0);
+    transform: translateX(calc(100vw - 230px));
     z-index: 999;
   }
   .cart-btn-wrapper {
-    margin: 2rem auto;
+    margin: 0rem 0px 0px 14px;
   }
   @media screen and (min-width: 992px) {
     .sidebar {
       display: none;
+    }
+    .cart-btn-wrapper {
+      margin: 2rem auto;
     }
   }
 `

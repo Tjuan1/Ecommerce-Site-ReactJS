@@ -1,11 +1,127 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useFilterContext } from '../context/filter_context'
-import { getUniqueValues, formatPrice } from '../utils/helpers'
+import { getUniqueValues } from '../utils/helpers'
 import { FaCheck } from 'react-icons/fa'
 
 const Filters = () => {
-  return <h4>filters</h4>
+  const {filters: {
+    text, 
+    category, 
+    company, 
+    color, 
+    min_price, 
+    max_price, 
+    price, 
+    shipping
+  }, 
+  updateFilters,
+  clearFilters,
+  all_products
+} = useFilterContext()
+
+
+// this is looking for two values (it´s in utils/helpers)
+// it creates an array of all the categories, companies or colors that we have
+const categories = getUniqueValues(all_products, 'category')
+
+const companies = getUniqueValues(all_products, 'company')
+
+const colors = getUniqueValues(all_products, 'colors')
+
+
+  return <Wrapper>
+   <div className="content">
+     {/* we prevent default so that the page doesnt reload whenever we change something in the form */}
+     <form onSubmit={(e) => e.preventDefault()}>
+        {/* {search input} */}
+          <div className="form-control">
+              <input 
+                type="text" 
+                name="text" 
+                placeholder='search'
+                className='search-input'
+                value={text}
+                onChange={updateFilters}
+              />
+          </div>
+        {/* {end search input} */}
+        {/* {categories} */}
+        <div className="form-control">
+          <h5>Category</h5>
+          <div>
+            {categories.map((cat, index) => {
+              return <button key={index}
+              onClick={updateFilters}
+              type="button"
+              name="category"
+              className={`${category === cat ? 'active' : null}`}
+              >{cat}</button>
+              
+            })}
+          </div>
+        </div>
+        {/* {end categories} */}
+
+        {/* {Companies} */}
+        <div className="form-control">
+          <h5>Company</h5>
+          <select name="company" 
+          value={company} 
+          onChange={updateFilters}
+          className="company"
+          >
+            {companies.map((comp, index) => {
+              return <option key={index} value={comp}>{comp}</option>
+            })
+            }
+          </select>
+        </div>
+        {/* {end Companies} */}
+
+        {/* {Colors} */}
+        <div className="form-control">
+          <h5>Colors</h5>
+          <div className="colors">
+              {colors.map((col, index) => {
+                if(col === 'All') {
+                  return <button key={index} name='color' onClick={updateFilters} data-color='All'
+                  className={`${color === 'All' ? 'all-btn active': 'all-btn'}`}>All</button>
+                }
+                return <button key={index} name="color" style={{background: col}}
+                className={`${color === col ? 'color-btn active': 'color-btn'}`}
+                data-color={col} onClick={updateFilters}>
+                    {color === col ? <FaCheck /> : null}
+                </button>
+              })}
+          </div>
+        </div>
+        {/* {end Colors} */}
+
+        {/* {Price} */}
+        <div className="form-control">
+          <h5>Price</h5>
+          <p className="price">{price}€</p>
+          <input type="range" name="price" onChange={updateFilters}
+          min={min_price} 
+          max={max_price} 
+          value={price}/>
+
+        </div>
+        {/* {end Price} */}
+
+        {/* {Shipping} */}
+        <div className="form-control shipping">
+          <label htmlFor ="shipping">Free Shipping</label>
+          <input type="checkbox" name="shipping" id="shipping"
+          onChange={updateFilters} checked={shipping}/>
+        </div>
+        {/* {end Shipping} */}
+
+     </form>
+     <button type="button" className="clear-btn" onClick={clearFilters}>Clear filters</button>
+   </div>
+  </Wrapper>
 }
 
 const Wrapper = styled.section`
@@ -58,7 +174,7 @@ const Wrapper = styled.section`
     border-radius: 50%;
     background: #222;
     margin-right: 0.5rem;
-    border: none;
+    border: 0.5px solid gray;
     cursor: pointer;
     opacity: 0.5;
     display: flex;
@@ -66,7 +182,7 @@ const Wrapper = styled.section`
     justify-content: center;
     svg {
       font-size: 0.5rem;
-      color: var(--clr-white);
+      color: var(--clr-grey-8);
     }
   }
   .all-btn {

@@ -22,14 +22,14 @@ export const services = [
   {
     id: 1,
     icon: <GiCompass />,
-    title: 'mission',
+    title: 'Buy local',
     text:
       'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ea. Perferendis corrupti reiciendis nesciunt rerum velit autem unde numquam nisi',
   },
   {
     id: 2,
     icon: <GiDiamondHard />,
-    title: 'vision',
+    title: 'sustainability',
     text:
       'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ea. Perferendis corrupti reiciendis nesciunt rerum velit autem unde numquam nisi',
   },
@@ -42,6 +42,11 @@ export const services = [
   },
 ]
 
-export const products_url = 'https://course-api.com/react-store-products'
+//export const products_url = 'https://course-api.com/react-store-products'
 
-export const single_product_url = `https://course-api.com/react-store-single-product?id=`
+
+export const products_url = 'https://temp-serverless-func-tjuan.netlify.app/.netlify/functions/3-complete'
+
+export const single_product_url = `https://temp-serverless-func-tjuan.netlify.app/.netlify/functions/3-complete?id=`
+
+// export const single_product_url = `https://course-api.com/react-store-single-product?id=`

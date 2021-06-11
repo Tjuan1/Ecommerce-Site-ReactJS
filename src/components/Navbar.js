@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import logo from '../assets/logo.svg'
-import { FaBars } from 'react-icons/fa'
+
 import { Link } from 'react-router-dom'
 import { links } from '../utils/constants'
 import CartButtons from './CartButtons'
@@ -9,7 +9,41 @@ import { useProductsContext } from '../context/products_context'
 import { useUserContext } from '../context/user_context'
 
 const Nav = () => {
-  return <h4>navbar</h4>
+  const { openSidebar } = useProductsContext()
+  const { isSidebarOpen } = useProductsContext()
+  const { myUser } = useUserContext()
+  
+  return (
+    <NavContainer>
+      <div className="nav-center">
+        <div className="nav-header">
+          <Link to="/">
+            <img src={logo} alt="logo" />
+          </Link>
+          <button type="button" 
+          className={`${isSidebarOpen ? 'nav-toggle  hidden' : 'nav-toggle'}`}
+          onClick={openSidebar}>
+            Menu
+          </button>
+        </div>
+        <ul className="nav-links">
+          {links.map((link) => {
+            const { id, text, url } = link;
+            return <li key={id}>
+              <Link to={url}>{text}</Link>
+            </li>
+          })}
+          { 
+            myUser && (
+            <li>
+              <Link to="/checkout">checkout</Link>
+            </li>)
+          }
+        </ul>
+        <CartButtons />
+      </div>
+    </NavContainer>
+  )
 }
 
 const NavContainer = styled.nav`
@@ -34,12 +68,22 @@ const NavContainer = styled.nav`
   }
   .nav-toggle {
     background: transparent;
-    border: transparent;
+    border: 2px solid var(--clr-primary-5);
     color: var(--clr-primary-5);
     cursor: pointer;
-    svg {
-      font-size: 2rem;
-    }
+    font-size: 16px;
+    padding: 4px;
+    border-radius: 5px;
+    opacity: 1;
+    transition: var(--transition); 
+  }
+  .nav-toggle:focus,
+  .nav-toggle:active{
+    outline: none;
+  }
+
+  .hidden {
+    opacity: 0;
   }
   .nav-links {
     display: none;
@@ -75,6 +119,7 @@ const NavContainer = styled.nav`
     }
     .cart-btn-wrapper {
       display: grid;
+      
     }
   }
 `

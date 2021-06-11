@@ -7,7 +7,35 @@ import { useCartContext } from '../context/cart_context'
 import { useUserContext } from '../context/user_context'
 
 const CartButtons = () => {
-  return <h4>cart buttons </h4>
+  const { closeSidebar } = useProductsContext()
+  const { total_items } = useCartContext()
+  const { loginWithRedirect, myUser, logout } = useUserContext()
+  return (
+    //we didn´t define cart-btn-warapper in the styles below, but it´s included in the
+    //navbar compoenent tha includes this component (it is display: none if width > 992px)
+    <div>
+    <Wrapper className='cart-btn-wrapper'>
+      <Link to="/cart" className="cart-btn" onClick={closeSidebar}>
+        <span className="cart-container">
+          Cart <FaShoppingCart />
+          <span className="cart-value">
+            {total_items}
+          </span>
+        </span>
+      </Link>
+      {myUser ? 
+      <button type="button" className="auth-btn" onClick={() => logout(
+        /* check Auth0 docs to see more */
+        {returnTo:window.location.origin}
+      )}>
+        Logout <FaUserMinus />
+      </button> :  
+      <button type="button" className="auth-btn" onClick={loginWithRedirect}>
+        Login <FaUserPlus /></button>
+      }
+    </Wrapper>
+   </div>
+  )
 }
 
 const Wrapper = styled.div`
@@ -18,7 +46,7 @@ const Wrapper = styled.div`
 
   .cart-btn {
     color: var(--clr-grey-1);
-    font-size: 1.5rem;
+    font-size: 1rem;
     letter-spacing: var(--spacing);
     color: var(--clr-grey-1);
     display: flex;
@@ -54,13 +82,21 @@ const Wrapper = styled.div`
     align-items: center;
     background: transparent;
     border-color: transparent;
-    font-size: 1.5rem;
+    font-size: 1rem;
     cursor: pointer;
     color: var(--clr-grey-1);
     letter-spacing: var(--spacing);
     svg {
       margin-left: 5px;
     }
+    @media screen and (min-width: 992px) {
+      .auth-btn {
+        font-size: 1.5rem;
+    }
+    .cart-btn {
+      font-size: 1.5rem;
+    }
+
   }
 `
 export default CartButtons
