@@ -105,11 +105,14 @@ const NavContainer = styled.nav`
       justify-content: center;
       li {
         margin: 0 0.5rem;
+        font-family: 'Righteous';
+        font-weight:600
+        
       }
       a {
         color: var(--clr-grey-3);
         font-size: 1rem;
-        text-transform: capitalize;
+        text-transform: uppercase;
         letter-spacing: var(--spacing);
         padding: 0.5rem;
         &:hover {

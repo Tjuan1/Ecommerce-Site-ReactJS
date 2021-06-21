@@ -7,7 +7,7 @@ const PageHero = ({ title, product }) => {
       <h3>
         <Link to="/">Home</Link>
         {product && <Link to="/products">/
-        Products</Link>}/ {title}
+        Products</Link>} / {title}
       </h3>
     </div>
   </Wrapper>
@@ -23,7 +23,7 @@ const Wrapper = styled.section`
   color: var(--clr-primary-1);
   a {
     color: var(--clr-primary-2);
-    padding: 0.5rem;
+    padding: 0.2rem;
     transition: var(--transition);
   }
   a:hover {
