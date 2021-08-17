@@ -6,7 +6,6 @@ const Contact = () => {
     <div className="section-center">
       <h3>Interested? Join our newsletter</h3>
       <div className="content">
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt rerum odit quis molestiae accusantium alias maiores esse. Explicabo, distinctio consequatur!</p>
         <form className="contact-form">
               <input type="email" 
               className="form-input" 
@@ -19,16 +18,29 @@ const Contact = () => {
 }
 const Wrapper = styled.section`
   padding: 5rem 0;
+  justify-content: center;
+  width: 100%;
+  display: flex;
   h3 {
     text-transform: none;
+    color: var(--clr-primary-2);
+    text-align: center;
+  }
   }
   p {
     line-height: 2;
     max-width: 45em;
     color: var(--clr-grey-5);
   }
+
+  .content{
+    width: 80%;
+    display: flex;
+    margin: auto;
+  }
+
   .contact-form {
-    width: 90vw;
+    width: 80vw;
     max-width: 500px;
     display: grid;
     grid-template-columns: 1fr auto;
@@ -36,11 +48,13 @@ const Wrapper = styled.section`
 
   .form-input,
   .submit-btn {
+
     font-size: 1rem;
     padding: 0.5rem 1rem;
-    border: 2px solid var(--clr-black);
+    border: 2px solid var(--clr-primary-10);
   }
   .form-input {
+    width: 50vw;
     border-right: none;
     color: var(--clr-grey-3);
     border-top-left-radius: var(--radius);
@@ -55,7 +69,7 @@ const Wrapper = styled.section`
     text-transform: capitalize;
   }
   .submit-btn {
-    background: var(--clr-primary-5);
+    background: var(--clr-primary-10);
     text-transform: capitalize;
     letter-spacing: var(--spacing);
     cursor: pointer;
@@ -78,7 +92,7 @@ const Wrapper = styled.section`
     }
   }
   @media (min-width: 1280px) {
-    padding: 15rem 0;
+    padding: 1rem 0;
   }
 `
 

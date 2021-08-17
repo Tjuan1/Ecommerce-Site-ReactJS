@@ -63,13 +63,15 @@ const NavContainer = styled.nav`
     justify-content: space-between;
     img {
       width: 175px;
-      margin-left: -15px;
+      position: absolute;
+      top: 10px;
+      left: 40px;
     }
   }
   .nav-toggle {
     background: transparent;
-    border: 2px solid var(--clr-primary-5);
-    color: var(--clr-primary-5);
+    border: 2px solid var(--clr-primary-10);
+    color: var(--clr-primary-10);
     cursor: pointer;
     font-size: 16px;
     padding: 4px;
@@ -121,8 +123,10 @@ const NavContainer = styled.nav`
       }
     }
     .cart-btn-wrapper {
-      display: grid;
-      
+      display: flex;
+      position: absolute;
+      top: 20px;
+      right: 40px;  
     }
   }
 `

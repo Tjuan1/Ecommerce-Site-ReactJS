@@ -39,10 +39,14 @@ const CartButtons = () => {
 }
 
 const Wrapper = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  width: 225px;
+  .cart-btn-wrapper {
+    display: grid;
+    grid-template-columns: 2fr;
+    align-items: center;
+    width: 225px;
+    padding-left:10px;
+  }
+
 
   .cart-btn {
     color: var(--clr-grey-1);
@@ -57,6 +61,9 @@ const Wrapper = styled.div`
     display: flex;
     align-items: center;
     position: relative;
+    height: 50px;
+    width: 150px;
+
     svg {
       height: 1.6rem;
       margin-left: 5px;
@@ -64,9 +71,9 @@ const Wrapper = styled.div`
   }
   .cart-value {
     position: absolute;
-    top: -10px;
-    right: -16px;
-    background: var(--clr-primary-5);
+    top: 0;
+    right: 75px;
+    background: var(--clr-primary-10);
     width: 16px;
     height: 16px;
     display: flex;
@@ -90,12 +97,27 @@ const Wrapper = styled.div`
       margin-left: 5px;
     }
     @media screen and (min-width: 992px) {
-      .auth-btn {
-        font-size: 1.5rem;
+      
+    .cart-btn-wrapper {
+      display: flex;
+      align-items: center;
+      width: 225px;
+      padding-left:10px;
     }
+      
+    .auth-btn {
+      font-size: 1.5rem;
+    }
+
     .cart-btn {
       font-size: 1.5rem;
     }
+
+    .cart-value{
+      top: -10px;
+      right: -16px;
+    }
+
 
   }
 `

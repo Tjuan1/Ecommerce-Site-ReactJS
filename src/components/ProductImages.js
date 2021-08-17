@@ -50,7 +50,8 @@ const Wrapper = styled.section`
   }
   @media (max-width: 576px) {
     .main {
-      height: 300px;
+      height: 450px;
+      width:100%;
     }
     .gallery {
       img {

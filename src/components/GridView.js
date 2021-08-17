@@ -19,16 +19,29 @@ const Wrapper = styled.section`
 
   .products-container {
     display: grid;
-    gap: 2rem 1.5rem;
+    gap: 0.2rem 1.5rem;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (min-width: 767px) {
+    .products-container {
+      gap: 2rem 1.5rem;
+    }
+    
+    img {
+      height: 350px;
+    }
   }
 
   @media (min-width: 992px) {
+   
+
     .products-container {
       grid-template-columns: repeat(2, 1fr);
     }
   }
   @media (min-width: 1170px) {
-    .products-container {
+    .products-container {     
       grid-template-columns: repeat(3, 1fr);
     }
   }

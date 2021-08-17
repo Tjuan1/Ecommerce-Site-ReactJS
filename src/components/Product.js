@@ -60,10 +60,8 @@ const Wrapper = styled.article`
     opacity: 1;
   }
   footer {
-    margin-top: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display:grid;
+    padding: 0 10px;
   }
   footer h5,
   footer p {
@@ -74,6 +72,16 @@ const Wrapper = styled.article`
   footer p {
     color: var(--clr-primary-1);
     letter-spacing: var(--spacing);
+  }
+
+  @media (min-width: 576px) {
+    footer {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
   }
 `
 export default Product

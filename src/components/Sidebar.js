@@ -53,7 +53,7 @@ const SidebarContainer = styled.div`
     font-size: 2rem;
     background: transparent;
     border-color: transparent;
-    color: var(--clr-primary-5);
+    color: var(--clr-primary-10);
     transition: var(--transition);
     cursor: pointer;
     color: var(--clr-red-dark);
@@ -75,7 +75,7 @@ const SidebarContainer = styled.div`
     font-size: 1rem;
     text-transform: capitalize;
     padding: 1rem 1.5rem;
-    color: var(--clr-grey-3);
+    color: var(--clr-primary-1);
     transition: var(--transition);
     letter-spacing: var(--spacing);
   }
@@ -84,7 +84,7 @@ const SidebarContainer = styled.div`
     padding: 1rem 1.5rem;
     padding-left: 2rem;
     background: var(--clr-grey-10);
-    color: var(--clr-grey-2);
+    color: var(--clr-primary-2);
   }
 
   .sidebar {
@@ -93,7 +93,7 @@ const SidebarContainer = styled.div`
     left: 0;
     width: 230px;
     height: 100%;
-    background: var(--clr-white);
+    background: var(--clr-primary-6);
     transition: var(--transition);
     transform: translateX(calc(100vw + 230px));
     z-index: -1;

@@ -1,12 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Filters, ProductList, Sort, PageHero } from '../components'
+import { Filters, ProductList, Sort } from '../components'
 
 const ProductsPage = () => {
   return <main>
-    <PageHero title="products" />
-    <Wrapper className="page">
-      
+    <Wrapper className="page">    
       <div className="section-center products"> 
       <Filters />   
         <div>
@@ -23,6 +21,7 @@ const Wrapper = styled.div`
     display: grid;
     gap: 3rem 1.5rem;
     margin: 4rem auto;
+    width:90vw;
   }
   @media (min-width: 768px) {
     .products {

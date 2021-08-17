@@ -6,8 +6,7 @@ import {
   Loading,
   Error,
   ProductImages,
-  AddToCart,
-  PageHero,
+  AddToCart
 } from '../components'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
@@ -51,7 +50,6 @@ const SingleProductPage = () => {
     image} = product
   return (
   <Wrapper>
-    <PageHero title={name} product/> 
     <div className="section section-center page">
      <Link to="/products" className='btn'>back to Products</Link>
      <div className="product-center">

@@ -6,6 +6,7 @@ import Error from './Error'
 import Loading from './Loading'
 import Product from './Product'
 
+
 const FeaturedProducts = () => {
   const {products_loading: loading, 
     products_error: error,
@@ -19,8 +20,6 @@ const FeaturedProducts = () => {
   return <Wrapper className="section">
     <div className="title">
       <h2>Featured products</h2>
-      <div className="underline">
-      </div>
       <div className="section-center featured">
         {featured_products.slice(0,3).map((product) => {
           return <Product key={product.id} {...product} />
@@ -33,14 +32,20 @@ const FeaturedProducts = () => {
 }
 
 const Wrapper = styled.section`
-  background: var(--clr-grey-10);
+  height: 100vh;
+  position:relative;
   .featured {
-    margin: 4rem auto;
+    margin: 4rem 0;
     display: grid;
-    gap: 2.5rem;
+    gap: 0rem;
     img {
-      height: 225px;
+      height: 120px;
+      width:100vw;
     }
+  }
+  
+  .title h2 {
+    margin-top: 5rem;
   }
   .btn {
     display: block;
@@ -50,8 +55,19 @@ const Wrapper = styled.section`
   }
   @media (min-width: 576px) {
     .featured {
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 2.5rem;
+      margin: 4rem auto;
+      grid-template-columns: 1fr;
     }
+
+    @media (min-width: 1020px) {
+      .featured {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 3fr));
+      }
+      .featured img {
+        height: 360px;
+        width: 100%;
+      }
   }
 `
 

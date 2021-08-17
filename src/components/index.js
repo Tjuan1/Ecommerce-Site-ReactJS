@@ -14,7 +14,6 @@ import Filters from './Filters'
 import ProductList from './ProductList'
 import Sort from './Sort'
 import CartContent from './CartContent'
-import PageHero from './PageHero'
 import StripeCheckout from './StripeCheckout'
 export {
   FeaturedProducts,
@@ -33,6 +32,5 @@ export {
   ProductList,
   Sort,
   CartContent,
-  PageHero,
   StripeCheckout,
 }
